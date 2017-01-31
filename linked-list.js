@@ -35,6 +35,25 @@ class LinkedList {
         }
         return result; 
     }
+
+    remove(val) {
+        let current = this.head;
+        let result;
+        let previous;
+        if(val === this.head.value) {
+            this.head = this.head.next;
+            return;
+        }
+        while(current != null) {
+            if(current.value === val) {
+                result = current;
+                break;
+            }
+            previous = current;
+            current = current.next;
+        }
+        previous.next = result.next;
+    }
 }
 
 let myLinkedList = new LinkedList;
@@ -48,4 +67,7 @@ myLinkedList.print();
 
 myLinkedList.search("my");
 myLinkedList.search("5");
+
+myLinkedList.remove("is");
+myLinkedList.print();
 
